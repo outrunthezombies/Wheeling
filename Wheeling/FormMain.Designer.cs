@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadLotteryResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuStrip = new System.Windows.Forms.MenuStrip();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadLotteryResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TssSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DgvLotteryData = new System.Windows.Forms.DataGridView();
-            this.LblLotteryName = new System.Windows.Forms.Label();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,42 +44,58 @@
             this.N6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1.SuspendLayout();
+            this.CboAvailableLotteries = new System.Windows.Forms.ComboBox();
+            this.LblAvailableLotteries = new System.Windows.Forms.Label();
+            this.MnuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // MnuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1065, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "MnuMainMenu";
+            this.MnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem});
+            this.MnuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MnuStrip.Name = "MnuStrip";
+            this.MnuStrip.Size = new System.Drawing.Size(1065, 24);
+            this.MnuStrip.TabIndex = 0;
+            this.MnuStrip.Text = "MnuMainMenu";
             // 
-            // fileToolStripMenuItem
+            // FileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadLotteryResultsToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddDrawToolStripMenuItem,
+            this.LoadLotteryResultsToolStripMenuItem,
+            this.TssSeparator,
+            this.ExitToolStripMenuItem});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.FileToolStripMenuItem.Text = "File";
             // 
-            // loadLotteryResultsToolStripMenuItem
+            // AddDrawToolStripMenuItem
             // 
-            this.loadLotteryResultsToolStripMenuItem.Name = "loadLotteryResultsToolStripMenuItem";
-            this.loadLotteryResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadLotteryResultsToolStripMenuItem.Text = "Load Lottery Results";
-            this.loadLotteryResultsToolStripMenuItem.Click += new System.EventHandler(this.LoadLotteryResultsToolStripMenuItem_Click);
+            this.AddDrawToolStripMenuItem.Name = "AddDrawToolStripMenuItem";
+            this.AddDrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddDrawToolStripMenuItem.Text = "Add Draw";
+            this.AddDrawToolStripMenuItem.Click += new System.EventHandler(this.AddDrawToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
+            // LoadLotteryResultsToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.LoadLotteryResultsToolStripMenuItem.Name = "LoadLotteryResultsToolStripMenuItem";
+            this.LoadLotteryResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.LoadLotteryResultsToolStripMenuItem.Text = "Load Lottery Results";
+            this.LoadLotteryResultsToolStripMenuItem.Click += new System.EventHandler(this.LoadLotteryResultsToolStripMenuItem_Click);
+            // 
+            // TssSeparator
+            // 
+            this.TssSeparator.Name = "TssSeparator";
+            this.TssSeparator.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // DgvLotteryData
             // 
@@ -93,18 +110,10 @@
             this.N6,
             this.N7,
             this.Bonus});
-            this.DgvLotteryData.Location = new System.Drawing.Point(12, 140);
+            this.DgvLotteryData.Location = new System.Drawing.Point(12, 78);
             this.DgvLotteryData.Name = "DgvLotteryData";
-            this.DgvLotteryData.Size = new System.Drawing.Size(547, 384);
+            this.DgvLotteryData.Size = new System.Drawing.Size(547, 446);
             this.DgvLotteryData.TabIndex = 1;
-            // 
-            // LblLotteryName
-            // 
-            this.LblLotteryName.AutoSize = true;
-            this.LblLotteryName.Location = new System.Drawing.Point(12, 121);
-            this.LblLotteryName.Name = "LblLotteryName";
-            this.LblLotteryName.Size = new System.Drawing.Size(0, 13);
-            this.LblLotteryName.TabIndex = 2;
             // 
             // Date
             // 
@@ -178,19 +187,39 @@
             this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Bonus.Width = 50;
             // 
+            // CboAvailableLotteries
+            // 
+            this.CboAvailableLotteries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboAvailableLotteries.FormattingEnabled = true;
+            this.CboAvailableLotteries.Location = new System.Drawing.Point(12, 51);
+            this.CboAvailableLotteries.Name = "CboAvailableLotteries";
+            this.CboAvailableLotteries.Size = new System.Drawing.Size(199, 21);
+            this.CboAvailableLotteries.TabIndex = 3;
+            this.CboAvailableLotteries.SelectedIndexChanged += new System.EventHandler(this.CboAvailableLotteries_SelectedIndexChanged);
+            // 
+            // LblAvailableLotteries
+            // 
+            this.LblAvailableLotteries.AutoSize = true;
+            this.LblAvailableLotteries.Location = new System.Drawing.Point(12, 32);
+            this.LblAvailableLotteries.Name = "LblAvailableLotteries";
+            this.LblAvailableLotteries.Size = new System.Drawing.Size(93, 13);
+            this.LblAvailableLotteries.TabIndex = 4;
+            this.LblAvailableLotteries.Text = "Available Lotteries";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 580);
-            this.Controls.Add(this.LblLotteryName);
+            this.Controls.Add(this.LblAvailableLotteries);
+            this.Controls.Add(this.CboAvailableLotteries);
             this.Controls.Add(this.DgvLotteryData);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.MnuStrip);
             this.Name = "FormMain";
             this.Text = "Lottery Wheeling";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.FormMain_Load);
+            this.MnuStrip.ResumeLayout(false);
+            this.MnuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,12 +228,11 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip MnuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.DataGridView DgvLotteryData;
-        private System.Windows.Forms.ToolStripMenuItem loadLotteryResultsToolStripMenuItem;
-        private System.Windows.Forms.Label LblLotteryName;
+        private System.Windows.Forms.ToolStripMenuItem LoadLotteryResultsToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn N1;
         private System.Windows.Forms.DataGridViewTextBoxColumn N2;
@@ -214,6 +242,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn N6;
         private System.Windows.Forms.DataGridViewTextBoxColumn N7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bonus;
+        private System.Windows.Forms.ToolStripMenuItem AddDrawToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator TssSeparator;
+        private System.Windows.Forms.ComboBox CboAvailableLotteries;
+        private System.Windows.Forms.Label LblAvailableLotteries;
     }
 }
 
