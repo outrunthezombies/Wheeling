@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WheelingProperties.cs" />
     <Compile Include="SharedCode.cs" />
     <Compile Include="FormAdd.cs">
       <SubType>Form</SubType>

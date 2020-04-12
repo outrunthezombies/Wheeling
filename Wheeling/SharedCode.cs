@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using Wheeling;
+
 public static class SharedCode
 {
+    public static WheelingProperties properties = new WheelingProperties();
     public static OleDbConnection oOleDbConnection;
     public static OleDbCommand oOleDbCommand;
-    public static readonly string sConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Greg\\source\\repos\\Wheeling\\Wheeling\\wheeling.accdb;Persist Security Info=False;";
+    // "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Greg\\source\\repos\\Wheeling\\Wheeling\\wheeling.accdb;Persist Security Info=False;"
+    public static readonly string sConnectionString = "Provider=" + properties.Get("provider") +
+                                                      "Data Source=" + properties.Get("datasource") +
+                                                      "Persist Security Info=" + properties.Get("security");
     public static Dictionary<string, int> lotteries = new Dictionary<string, int>();
-    public static Dictionary<SharedCode.LotteryInfo, object> lotteryInfo = new Dictionary<SharedCode.LotteryInfo, object>();
+    public static Dictionary<LotteryInfo, object> lotteryInfo = new Dictionary<LotteryInfo, object>();
 
     public enum DataColumn
     {

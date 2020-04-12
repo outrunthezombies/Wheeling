@@ -35,6 +35,8 @@
             this.TssSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DgvLotteryData = new System.Windows.Forms.DataGridView();
+            this.CboAvailableLotteries = new System.Windows.Forms.ComboBox();
+            this.LblAvailableLotteries = new System.Windows.Forms.Label();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +46,6 @@
             this.N6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CboAvailableLotteries = new System.Windows.Forms.ComboBox();
-            this.LblAvailableLotteries = new System.Windows.Forms.Label();
             this.MnuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).BeginInit();
             this.SuspendLayout();
@@ -112,80 +112,8 @@
             this.Bonus});
             this.DgvLotteryData.Location = new System.Drawing.Point(12, 78);
             this.DgvLotteryData.Name = "DgvLotteryData";
-            this.DgvLotteryData.Size = new System.Drawing.Size(547, 446);
+            this.DgvLotteryData.Size = new System.Drawing.Size(382, 446);
             this.DgvLotteryData.TabIndex = 1;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Date.Width = 80;
-            // 
-            // N1
-            // 
-            this.N1.HeaderText = "N1";
-            this.N1.Name = "N1";
-            this.N1.ReadOnly = true;
-            this.N1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N1.Width = 50;
-            // 
-            // N2
-            // 
-            this.N2.HeaderText = "N2";
-            this.N2.Name = "N2";
-            this.N2.ReadOnly = true;
-            this.N2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N2.Width = 50;
-            // 
-            // N3
-            // 
-            this.N3.HeaderText = "N3";
-            this.N3.Name = "N3";
-            this.N3.ReadOnly = true;
-            this.N3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N3.Width = 50;
-            // 
-            // N4
-            // 
-            this.N4.HeaderText = "N4";
-            this.N4.Name = "N4";
-            this.N4.ReadOnly = true;
-            this.N4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N4.Width = 50;
-            // 
-            // N5
-            // 
-            this.N5.HeaderText = "N5";
-            this.N5.Name = "N5";
-            this.N5.ReadOnly = true;
-            this.N5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N5.Width = 50;
-            // 
-            // N6
-            // 
-            this.N6.HeaderText = "N6";
-            this.N6.Name = "N6";
-            this.N6.ReadOnly = true;
-            this.N6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N6.Width = 50;
-            // 
-            // N7
-            // 
-            this.N7.HeaderText = "N7";
-            this.N7.Name = "N7";
-            this.N7.ReadOnly = true;
-            this.N7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.N7.Width = 50;
-            // 
-            // Bonus
-            // 
-            this.Bonus.HeaderText = "Bonus";
-            this.Bonus.Name = "Bonus";
-            this.Bonus.ReadOnly = true;
-            this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Bonus.Width = 50;
             // 
             // CboAvailableLotteries
             // 
@@ -205,6 +133,78 @@
             this.LblAvailableLotteries.Size = new System.Drawing.Size(93, 13);
             this.LblAvailableLotteries.TabIndex = 4;
             this.LblAvailableLotteries.Text = "Available Lotteries";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Date.Width = 75;
+            // 
+            // N1
+            // 
+            this.N1.HeaderText = "N1";
+            this.N1.Name = "N1";
+            this.N1.ReadOnly = true;
+            this.N1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N1.Width = 30;
+            // 
+            // N2
+            // 
+            this.N2.HeaderText = "N2";
+            this.N2.Name = "N2";
+            this.N2.ReadOnly = true;
+            this.N2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N2.Width = 30;
+            // 
+            // N3
+            // 
+            this.N3.HeaderText = "N3";
+            this.N3.Name = "N3";
+            this.N3.ReadOnly = true;
+            this.N3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N3.Width = 30;
+            // 
+            // N4
+            // 
+            this.N4.HeaderText = "N4";
+            this.N4.Name = "N4";
+            this.N4.ReadOnly = true;
+            this.N4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N4.Width = 30;
+            // 
+            // N5
+            // 
+            this.N5.HeaderText = "N5";
+            this.N5.Name = "N5";
+            this.N5.ReadOnly = true;
+            this.N5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N5.Width = 30;
+            // 
+            // N6
+            // 
+            this.N6.HeaderText = "N6";
+            this.N6.Name = "N6";
+            this.N6.ReadOnly = true;
+            this.N6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N6.Width = 30;
+            // 
+            // N7
+            // 
+            this.N7.HeaderText = "N7";
+            this.N7.Name = "N7";
+            this.N7.ReadOnly = true;
+            this.N7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.N7.Width = 30;
+            // 
+            // Bonus
+            // 
+            this.Bonus.HeaderText = "Bon";
+            this.Bonus.Name = "Bonus";
+            this.Bonus.ReadOnly = true;
+            this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Bonus.Width = 30;
             // 
             // FormMain
             // 
@@ -233,6 +233,10 @@
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.DataGridView DgvLotteryData;
         private System.Windows.Forms.ToolStripMenuItem LoadLotteryResultsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddDrawToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator TssSeparator;
+        private System.Windows.Forms.ComboBox CboAvailableLotteries;
+        private System.Windows.Forms.Label LblAvailableLotteries;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn N1;
         private System.Windows.Forms.DataGridViewTextBoxColumn N2;
@@ -242,10 +246,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn N6;
         private System.Windows.Forms.DataGridViewTextBoxColumn N7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bonus;
-        private System.Windows.Forms.ToolStripMenuItem AddDrawToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator TssSeparator;
-        private System.Windows.Forms.ComboBox CboAvailableLotteries;
-        private System.Windows.Forms.Label LblAvailableLotteries;
     }
 }
 
