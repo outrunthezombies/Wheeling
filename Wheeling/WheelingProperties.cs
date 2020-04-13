@@ -80,15 +80,11 @@ namespace Wheeling
                     String key = line.Substring(0, index).Trim();
                     String value = line.Substring(index + 1).Trim();
 
-                    if ((value.StartsWith("\"") && value.EndsWith("\"")) ||
-                        (value.StartsWith("'") && value.EndsWith("'")))
-                    {
+                    if ((value.StartsWith("\"") && value.EndsWith("\"")) || (value.StartsWith("'") && value.EndsWith("'")))
                         value = value.Substring(1, value.Length - 2);
-                    }
 
                     try
                     {
-                        //ignore dublicates
                         properties.Add(key, value);
                     }
                     catch { }

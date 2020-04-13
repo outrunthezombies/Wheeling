@@ -16,13 +16,8 @@ namespace Wheeling
         }
         private void FormAdd_Load(object sender, EventArgs e)
         {
-            for (int index=1; index<=(int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
-            {
-                LstDrawNumbers.Items.Add(index.ToString());
-            }
-
-            for (int index=1; index<=(int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
-                CboBonusNumber.Items.Add(index);
+            LoadAllLotteryNumberOptions(LstDrawNumbers);
+            LoadAllLotteryNumberOptions(CboBonusNumber);
 
             LblLottery.Text = lotteryInfo[LotteryInfo.LotteryName].ToString();
             if ((DateTime)lotteryInfo[LotteryInfo.MinDrawDate] != default)
@@ -38,13 +33,9 @@ namespace Wheeling
                 for (int index = 0; index < 7; index++)
                 {
                     if (index < LstDrawNumbers.SelectedItems.Count)
-                    {
                         sqlInsertUpdate += "," + LstDrawNumbers.SelectedItems[index].Text;
-                    }
                     else
-                    {
                         sqlInsertUpdate += ",null";
-                    }
                 }
                 sqlInsertUpdate += "," + CboBonusNumber.SelectedItem.ToString() + ")";
                 try
@@ -70,7 +61,6 @@ namespace Wheeling
             if (LstDrawNumbers.SelectedItems.Count > (int)lotteryInfo[LotteryInfo.NumbersDrawn])
                 e.Item.Selected = false;
         }
-
         private void CboBonusNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckBonusNumber();
@@ -80,9 +70,7 @@ namespace Wheeling
             for (int index = 0; index < LstDrawNumbers.SelectedItems.Count; index++)
             {
                 if (CboBonusNumber.SelectedIndex > -1 && CboBonusNumber.SelectedItem.ToString().Equals(LstDrawNumbers.SelectedItems[index].Text))
-                {
                     CboBonusNumber.SelectedIndex = -1;
-                }
             }
         }
     }

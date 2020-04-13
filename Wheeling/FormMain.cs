@@ -24,6 +24,7 @@ namespace Wheeling
         {
             Cursor.Current = Cursors.WaitCursor;
             lotteryInfo.Clear();
+            LstDrawNumbers.Items.Clear();
 
             if (CboAvailableLotteries.SelectedIndex >= 0)
             {
@@ -95,6 +96,7 @@ namespace Wheeling
 
                 }
             }
+            LoadAllLotteryNumberOptions(LstDrawNumbers);
             Cursor.Current = Cursors.Default;
         }
         private void AddDrawToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,6 +115,36 @@ namespace Wheeling
         private void CboAvailableLotteries_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadLotteryData();
+            CboWheelSize.Enabled = true;
+        }
+
+        private void CboWheelSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(CboWheelSize.SelectedItem) < LstDrawNumbers.SelectedItems.Count)
+            {
+                for (int index = 0; index < LstDrawNumbers.Items.Count; index++)
+                    LstDrawNumbers.Items[index].Selected = false;
+            }
+            if (CboWheelSize.SelectedIndex > -1)
+                LstDrawNumbers.Enabled = true;
+            CheckIfReadyToWheel();
+        }
+        private void CheckIfReadyToWheel()
+        {
+            if (LstDrawNumbers.SelectedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
+                BtnBuildWheel.Enabled = true;
+            else if (LstDrawNumbers.SelectedItems.Count < Convert.ToInt32(CboWheelSize.SelectedItem))
+                BtnBuildWheel.Enabled = false;
+        }
+        private void LstDrawNumbers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (LstDrawNumbers.SelectedItems.Count > Convert.ToInt32(CboWheelSize.SelectedItem))
+                e.Item.Selected = false;
+            CheckIfReadyToWheel();
+        }
+        private void BtnBuildWheel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Build the Wheel!");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Windows.Forms;
 using Wheeling;
 
 public static class SharedCode
@@ -109,5 +110,15 @@ public static class SharedCode
         {
             CloseDBConnection();
         }
+    }
+    public static void LoadAllLotteryNumberOptions(ListView lstView)
+    {
+        for (int index = 1; index <= (int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
+            lstView.Items.Add(index.ToString());
+    }
+    public static void LoadAllLotteryNumberOptions(ComboBox cboBox)
+    {
+        for (int index = 1; index <= (int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
+            cboBox.Items.Add(index);
     }
 }
