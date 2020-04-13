@@ -23,7 +23,8 @@ namespace Wheeling
         private void LoadLotteryData()
         {
             Cursor.Current = Cursors.WaitCursor;
-            LstDrawNumbers.Items.Clear();
+            foreach (ListViewItem lvi in LstDrawNumbers.Items)
+                lvi.Checked = false;
 
             if (CboAvailableLotteries.SelectedIndex >= 0)
             {
@@ -114,10 +115,10 @@ namespace Wheeling
         }
         private void CboWheelSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(CboWheelSize.SelectedItem) < LstDrawNumbers.SelectedItems.Count)
+            if (Convert.ToInt32(CboWheelSize.SelectedItem) < LstDrawNumbers.CheckedItems.Count)
             {
-                for (int index = 0; index < LstDrawNumbers.Items.Count; index++)
-                    LstDrawNumbers.Items[index].Selected = false;
+                foreach (ListViewItem lvi in LstDrawNumbers.Items)
+                    lvi.Checked = false;
             }
             if (CboWheelSize.SelectedIndex > -1)
             {
@@ -129,22 +130,16 @@ namespace Wheeling
         }
         private void CheckIfReadyToWheel()
         {
-            if (LstDrawNumbers.SelectedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
+            if (LstDrawNumbers.CheckedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
             {
                 BtnBuildWheel.Enabled = true;
                 BtnSaveWheel.Enabled = true;
             }
-            else if (LstDrawNumbers.SelectedItems.Count < Convert.ToInt32(CboWheelSize.SelectedItem))
+            else if (LstDrawNumbers.CheckedItems.Count < Convert.ToInt32(CboWheelSize.SelectedItem))
             {
                 BtnBuildWheel.Enabled = false;
                 BtnSaveWheel.Enabled = false;
             }
-        }
-        private void LstDrawNumbers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (LstDrawNumbers.SelectedItems.Count > Convert.ToInt32(CboWheelSize.SelectedItem))
-                e.Item.Selected = false;
-            CheckIfReadyToWheel();
         }
         private void BtnBuildWheel_Click(object sender, EventArgs e)
         {
@@ -153,19 +148,25 @@ namespace Wheeling
         private void BtnSaveWheel_Click(object sender, EventArgs e)
         {
             string wheel = "";
-            for (int index = 0; index < LstDrawNumbers.SelectedItems.Count - 1; index++)
+            for (int index = 0; index < LstDrawNumbers.CheckedItems.Count - 1; index++)
             {
-                wheel += LstDrawNumbers.SelectedItems[index].Text + ",";
+                wheel += LstDrawNumbers.CheckedItems[index].Text + ",";
             }
-            wheel += LstDrawNumbers.SelectedItems[LstDrawNumbers.SelectedItems.Count-1].Text;
+            wheel += LstDrawNumbers.CheckedItems[LstDrawNumbers.CheckedItems.Count-1].Text;
             properties.Save();
             MessageBox.Show("Wheel is saved!");
         }
 
         private void BtnLoadWheel_Click(object sender, EventArgs e)
         {
-            LstDrawNumbers.Items.Clear();
-            
+            foreach (ListViewItem lvi in LstDrawNumbers.Items)
+                lvi.Checked = false;
+        }
+
+        private void LstDrawNumbers_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (LstDrawNumbers.CheckedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
+                e.NewValue = CheckState.Unchecked;
         }
     }
 }

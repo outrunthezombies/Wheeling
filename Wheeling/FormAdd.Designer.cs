@@ -73,12 +73,14 @@
             // 
             // LstDrawNumbers
             // 
+            this.LstDrawNumbers.CheckBoxes = true;
             this.LstDrawNumbers.HideSelection = false;
             this.LstDrawNumbers.Location = new System.Drawing.Point(7, 74);
             this.LstDrawNumbers.Name = "LstDrawNumbers";
-            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 301);
+            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 449);
             this.LstDrawNumbers.TabIndex = 12;
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
+            this.LstDrawNumbers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LstDrawNumbers_ItemCheck);
             this.LstDrawNumbers.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstDrawNumbers_ItemSelectionChanged);
             // 
             // CboBonusNumber
@@ -95,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 389);
+            this.ClientSize = new System.Drawing.Size(474, 533);
             this.Controls.Add(this.CboBonusNumber);
             this.Controls.Add(this.LstDrawNumbers);
             this.Controls.Add(this.LblLottery);

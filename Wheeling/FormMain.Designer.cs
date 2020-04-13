@@ -35,6 +35,7 @@
             this.TssSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.MnuExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GpbWheels = new System.Windows.Forms.GroupBox();
+            this.BtnLoadWheel = new System.Windows.Forms.Button();
             this.BtnSaveWheel = new System.Windows.Forms.Button();
             this.BtnBuildWheel = new System.Windows.Forms.Button();
             this.LblChooseWheel = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.N6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnLoadWheel = new System.Windows.Forms.Button();
             this.MnuStrip.SuspendLayout();
             this.GpbWheels.SuspendLayout();
             this.gbbLotteryData.SuspendLayout();
@@ -123,6 +123,17 @@
             this.GpbWheels.TabIndex = 6;
             this.GpbWheels.TabStop = false;
             // 
+            // BtnLoadWheel
+            // 
+            this.BtnLoadWheel.Enabled = false;
+            this.BtnLoadWheel.Location = new System.Drawing.Point(302, 30);
+            this.BtnLoadWheel.Name = "BtnLoadWheel";
+            this.BtnLoadWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnLoadWheel.TabIndex = 18;
+            this.BtnLoadWheel.Text = "Load Wheel";
+            this.BtnLoadWheel.UseVisualStyleBackColor = true;
+            this.BtnLoadWheel.Click += new System.EventHandler(this.BtnLoadWheel_Click);
+            // 
             // BtnSaveWheel
             // 
             this.BtnSaveWheel.Enabled = false;
@@ -172,14 +183,15 @@
             // 
             // LstDrawNumbers
             // 
+            this.LstDrawNumbers.CheckBoxes = true;
             this.LstDrawNumbers.Enabled = false;
             this.LstDrawNumbers.HideSelection = false;
             this.LstDrawNumbers.Location = new System.Drawing.Point(6, 59);
             this.LstDrawNumbers.Name = "LstDrawNumbers";
-            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 311);
+            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 449);
             this.LstDrawNumbers.TabIndex = 13;
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
-            this.LstDrawNumbers.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstDrawNumbers_ItemSelectionChanged);
+            this.LstDrawNumbers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LstDrawNumbers_ItemCheck);
             // 
             // gbbLotteryData
             // 
@@ -300,17 +312,6 @@
             this.Bonus.ReadOnly = true;
             this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Bonus.Width = 30;
-            // 
-            // BtnLoadWheel
-            // 
-            this.BtnLoadWheel.Enabled = false;
-            this.BtnLoadWheel.Location = new System.Drawing.Point(302, 30);
-            this.BtnLoadWheel.Name = "BtnLoadWheel";
-            this.BtnLoadWheel.Size = new System.Drawing.Size(75, 23);
-            this.BtnLoadWheel.TabIndex = 18;
-            this.BtnLoadWheel.Text = "Load Wheel";
-            this.BtnLoadWheel.UseVisualStyleBackColor = true;
-            this.BtnLoadWheel.Click += new System.EventHandler(this.BtnLoadWheel_Click);
             // 
             // FormMain
             // 
