@@ -19,17 +19,17 @@ namespace Wheeling
             LoadAllLotteryNumberOptions(LstDrawNumbers);
             LoadAllLotteryNumberOptions(CboBonusNumber);
 
-            LblLottery.Text = lotteryInfo[LotteryInfo.LotteryName].ToString();
-            if ((DateTime)lotteryInfo[LotteryInfo.MinDrawDate] != default)
-                DtpDrawDate.MinDate = (DateTime)lotteryInfo[LotteryInfo.MinDrawDate];
+            LblLottery.Text = lotteries[lotterySelected].Name;
+            if (lotteries[lotterySelected].MinDrawDate != default)
+                DtpDrawDate.MinDate = lotteries[lotterySelected].MinDrawDate;
         }
         private void BtnAddDraw_Click(object sender, EventArgs e)
         {
-            if (LstDrawNumbers.SelectedItems.Count == (int)lotteryInfo[LotteryInfo.NumbersDrawn] && CboBonusNumber.SelectedIndex >= 0)
+            if (LstDrawNumbers.SelectedItems.Count == (int)lotteries[lotterySelected].NumbersDrawn && CboBonusNumber.SelectedIndex >= 0)
             {
                 // Go ahead and save
                 string sqlInsertUpdate = "INSERT INTO Draws (lottery_id,draw_date,n1,n2,n3,n4,n5,n6,n7,bonus) " +
-                "VALUES (" + lotteryInfo[LotteryInfo.LotteryID] + ",'" + DtpDrawDate.Value.ToString("yyyy-MM-dd") + "'";
+                "VALUES (" + lotteries[lotterySelected].ID + ",'" + DtpDrawDate.Value.ToString("yyyy-MM-dd") + "'";
                 for (int index = 0; index < 7; index++)
                 {
                     if (index < LstDrawNumbers.SelectedItems.Count)
@@ -58,7 +58,7 @@ namespace Wheeling
         {
             CheckBonusNumber();
 
-            if (LstDrawNumbers.SelectedItems.Count > (int)lotteryInfo[LotteryInfo.NumbersDrawn])
+            if (LstDrawNumbers.SelectedItems.Count > lotteries[lotterySelected].NumbersDrawn)
                 e.Item.Selected = false;
         }
         private void CboBonusNumber_SelectedIndexChanged(object sender, EventArgs e)

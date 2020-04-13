@@ -23,12 +23,11 @@ namespace Wheeling
         private void LoadLotteryData()
         {
             Cursor.Current = Cursors.WaitCursor;
-            lotteryInfo.Clear();
             LstDrawNumbers.Items.Clear();
 
             if (CboAvailableLotteries.SelectedIndex >= 0)
             {
-                string sql = "SELECT D.Draw_date,D.N1,D.N2,D.N3,D.N4,D.N5,D.N6,D.N7,D.Bonus,L.id,L.lottery_name,L.max_number,L.numbers_drawn FROM Lottery L INNER JOIN Draws D ON L.ID = D.Lottery_ID WHERE L.ID = " + lotteries[CboAvailableLotteries.SelectedItem.ToString()] + " ORDER BY D.Draw_date DESC";
+                string sql = "SELECT D.Draw_date,D.N1,D.N2,D.N3,D.N4,D.N5,D.N6,D.N7,D.Bonus,L.id,L.lottery_name,L.max_number,L.numbers_drawn FROM Lottery L INNER JOIN Draws D ON L.ID = D.Lottery_ID WHERE L.ID = " + lotteries[lotterySelected].ID + " ORDER BY D.Draw_date DESC";
                 DgvLotteryData.Rows.Clear();
 
                 OleDbDataReader oOleDbDataReader;
@@ -88,12 +87,6 @@ namespace Wheeling
                 finally
                 {
                     CloseDBConnection();
-                    lotteryInfo.Add(LotteryInfo.LotteryID, lotteryID);
-                    lotteryInfo.Add(LotteryInfo.LotteryName, lotteryName);
-                    lotteryInfo.Add(LotteryInfo.NumbersDrawn, lotteryNumbersDrawn);
-                    lotteryInfo.Add(LotteryInfo.MaxNumber, lotteryMaxNumber);
-                    lotteryInfo.Add(LotteryInfo.MinDrawDate, lotteryMinDrawDate.AddDays(1));
-
                 }
             }
             LoadAllLotteryNumberOptions(LstDrawNumbers);
@@ -108,11 +101,12 @@ namespace Wheeling
         private void FormMain_Load(object sender, EventArgs e)
         {
             GetLotteries();
-            foreach (KeyValuePair<string, int> lottery in lotteries)
-                CboAvailableLotteries.Items.Add(lottery.Key);
+            foreach (Lottery lottery in lotteries)
+                CboAvailableLotteries.Items.Add(lottery.Name);
         }
         private void CboAvailableLotteries_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lotterySelected = CboAvailableLotteries.SelectedIndex;
             LoadLotteryData();
             CboWheelSize.Enabled = true;
             MnuAddDrawToolStripMenuItem.Enabled = true;

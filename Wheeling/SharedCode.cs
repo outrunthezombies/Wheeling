@@ -10,12 +10,9 @@ public static class SharedCode
     public static WheelingProperties properties = new WheelingProperties();
     public static OleDbConnection oOleDbConnection;
     public static OleDbCommand oOleDbCommand;
-    // "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Greg\\source\\repos\\Wheeling\\Wheeling\\wheeling.accdb;Persist Security Info=False;"
-    public static readonly string sConnectionString = "Provider=" + properties.Get("provider") +
-                                                      "Data Source=" + properties.Get("datasource") +
-                                                      "Persist Security Info=" + properties.Get("security");
-    public static Dictionary<string, int> lotteries = new Dictionary<string, int>();
-    public static Dictionary<LotteryInfo, object> lotteryInfo = new Dictionary<LotteryInfo, object>();
+    public static readonly string sConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + properties.Get("datasource") + ";Persist Security Info=False;";
+    public static List<Lottery> lotteries = new List<Lottery>();
+    public static int lotterySelected = -1;
 
     public enum DataColumn
     {
@@ -86,7 +83,7 @@ public static class SharedCode
     }
     public static void GetLotteries()
     {
-        string sql = "SELECT id, lottery_name FROM Lottery ORDER BY id ASC";
+        string sql = "SELECT id, lottery_name, max_number, numbers_drawn FROM Lottery ORDER BY lottery_name";
 
         OleDbDataReader oOleDbDataReader;
         try
@@ -97,7 +94,14 @@ public static class SharedCode
 
                 while (oOleDbDataReader.Read())
                 {
-                    lotteries.Add(oOleDbDataReader.GetString(1), oOleDbDataReader.GetInt32(0));
+                    Lottery lottery = new Lottery
+                    {
+                        ID = oOleDbDataReader.GetInt32(0),
+                        Name = oOleDbDataReader.GetString(1),
+                        MaxNumber = oOleDbDataReader.GetInt32(2),
+                        NumbersDrawn = oOleDbDataReader.GetInt32(3)
+                    };
+                    lotteries.Add(lottery);
                 }
                 oOleDbDataReader.Close();
             }
@@ -113,12 +117,12 @@ public static class SharedCode
     }
     public static void LoadAllLotteryNumberOptions(ListView lstView)
     {
-        for (int index = 1; index <= (int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
+        for (int index = 1; index <= lotteries[lotterySelected].MaxNumber; index++)
             lstView.Items.Add(index.ToString());
     }
     public static void LoadAllLotteryNumberOptions(ComboBox cboBox)
     {
-        for (int index = 1; index <= (int)lotteryInfo[LotteryInfo.MaxNumber]; index++)
+        for (int index = 1; index <= lotteries[lotterySelected].MaxNumber; index++)
             cboBox.Items.Add(index);
     }
 }

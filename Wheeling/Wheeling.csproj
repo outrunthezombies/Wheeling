@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lottery.cs" />
     <Compile Include="WheelingProperties.cs" />
     <Compile Include="SharedCode.cs" />
     <Compile Include="FormAdd.cs">
