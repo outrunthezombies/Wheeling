@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.MnuStrip = new System.Windows.Forms.MenuStrip();
-            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadLotteryResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuAddDrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuLoadLotteryResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TssSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GpbWheels = new System.Windows.Forms.GroupBox();
+            this.BtnSaveWheel = new System.Windows.Forms.Button();
+            this.BtnBuildWheel = new System.Windows.Forms.Button();
             this.LblChooseWheel = new System.Windows.Forms.Label();
             this.CboWheelSize = new System.Windows.Forms.ComboBox();
             this.LstDrawNumbers = new System.Windows.Forms.ListView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbbLotteryData = new System.Windows.Forms.GroupBox();
             this.LblAvailableLotteries = new System.Windows.Forms.Label();
             this.CboAvailableLotteries = new System.Windows.Forms.ComboBox();
             this.DgvLotteryData = new System.Windows.Forms.DataGridView();
@@ -51,62 +53,66 @@
             this.N6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnBuildWheel = new System.Windows.Forms.Button();
+            this.BtnLoadWheel = new System.Windows.Forms.Button();
             this.MnuStrip.SuspendLayout();
             this.GpbWheels.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbbLotteryData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).BeginInit();
             this.SuspendLayout();
             // 
             // MnuStrip
             // 
             this.MnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem});
+            this.MnuFileToolStripMenuItem});
             this.MnuStrip.Location = new System.Drawing.Point(0, 0);
             this.MnuStrip.Name = "MnuStrip";
             this.MnuStrip.Size = new System.Drawing.Size(806, 24);
             this.MnuStrip.TabIndex = 0;
             this.MnuStrip.Text = "MnuMainMenu";
             // 
-            // FileToolStripMenuItem
+            // MnuFileToolStripMenuItem
             // 
-            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddDrawToolStripMenuItem,
-            this.LoadLotteryResultsToolStripMenuItem,
+            this.MnuFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnuAddDrawToolStripMenuItem,
+            this.MnuLoadLotteryResultsToolStripMenuItem,
             this.TssSeparator,
-            this.ExitToolStripMenuItem});
-            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.FileToolStripMenuItem.Text = "File";
+            this.MnuExitToolStripMenuItem});
+            this.MnuFileToolStripMenuItem.Name = "MnuFileToolStripMenuItem";
+            this.MnuFileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.MnuFileToolStripMenuItem.Text = "File";
             // 
-            // AddDrawToolStripMenuItem
+            // MnuAddDrawToolStripMenuItem
             // 
-            this.AddDrawToolStripMenuItem.Name = "AddDrawToolStripMenuItem";
-            this.AddDrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.AddDrawToolStripMenuItem.Text = "Add Draw";
-            this.AddDrawToolStripMenuItem.Click += new System.EventHandler(this.AddDrawToolStripMenuItem_Click);
+            this.MnuAddDrawToolStripMenuItem.Enabled = false;
+            this.MnuAddDrawToolStripMenuItem.Name = "MnuAddDrawToolStripMenuItem";
+            this.MnuAddDrawToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MnuAddDrawToolStripMenuItem.Text = "Add Draw";
+            this.MnuAddDrawToolStripMenuItem.Click += new System.EventHandler(this.AddDrawToolStripMenuItem_Click);
             // 
-            // LoadLotteryResultsToolStripMenuItem
+            // MnuLoadLotteryResultsToolStripMenuItem
             // 
-            this.LoadLotteryResultsToolStripMenuItem.Name = "LoadLotteryResultsToolStripMenuItem";
-            this.LoadLotteryResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.LoadLotteryResultsToolStripMenuItem.Text = "Load Lottery Results";
-            this.LoadLotteryResultsToolStripMenuItem.Click += new System.EventHandler(this.LoadLotteryResultsToolStripMenuItem_Click);
+            this.MnuLoadLotteryResultsToolStripMenuItem.Enabled = false;
+            this.MnuLoadLotteryResultsToolStripMenuItem.Name = "MnuLoadLotteryResultsToolStripMenuItem";
+            this.MnuLoadLotteryResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MnuLoadLotteryResultsToolStripMenuItem.Text = "Load Lottery Results";
+            this.MnuLoadLotteryResultsToolStripMenuItem.Click += new System.EventHandler(this.LoadLotteryResultsToolStripMenuItem_Click);
             // 
             // TssSeparator
             // 
             this.TssSeparator.Name = "TssSeparator";
             this.TssSeparator.Size = new System.Drawing.Size(177, 6);
             // 
-            // ExitToolStripMenuItem
+            // MnuExitToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ExitToolStripMenuItem.Text = "Exit";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.MnuExitToolStripMenuItem.Name = "MnuExitToolStripMenuItem";
+            this.MnuExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MnuExitToolStripMenuItem.Text = "Exit";
+            this.MnuExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // GpbWheels
             // 
+            this.GpbWheels.Controls.Add(this.BtnLoadWheel);
+            this.GpbWheels.Controls.Add(this.BtnSaveWheel);
             this.GpbWheels.Controls.Add(this.BtnBuildWheel);
             this.GpbWheels.Controls.Add(this.LblChooseWheel);
             this.GpbWheels.Controls.Add(this.CboWheelSize);
@@ -116,6 +122,28 @@
             this.GpbWheels.Size = new System.Drawing.Size(385, 518);
             this.GpbWheels.TabIndex = 6;
             this.GpbWheels.TabStop = false;
+            // 
+            // BtnSaveWheel
+            // 
+            this.BtnSaveWheel.Enabled = false;
+            this.BtnSaveWheel.Location = new System.Drawing.Point(212, 30);
+            this.BtnSaveWheel.Name = "BtnSaveWheel";
+            this.BtnSaveWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnSaveWheel.TabIndex = 17;
+            this.BtnSaveWheel.Text = "Save Wheel";
+            this.BtnSaveWheel.UseVisualStyleBackColor = true;
+            this.BtnSaveWheel.Click += new System.EventHandler(this.BtnSaveWheel_Click);
+            // 
+            // BtnBuildWheel
+            // 
+            this.BtnBuildWheel.Enabled = false;
+            this.BtnBuildWheel.Location = new System.Drawing.Point(127, 30);
+            this.BtnBuildWheel.Name = "BtnBuildWheel";
+            this.BtnBuildWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuildWheel.TabIndex = 16;
+            this.BtnBuildWheel.Text = "Build Wheel";
+            this.BtnBuildWheel.UseVisualStyleBackColor = true;
+            this.BtnBuildWheel.Click += new System.EventHandler(this.BtnBuildWheel_Click);
             // 
             // LblChooseWheel
             // 
@@ -138,7 +166,7 @@
             "15"});
             this.CboWheelSize.Location = new System.Drawing.Point(6, 32);
             this.CboWheelSize.Name = "CboWheelSize";
-            this.CboWheelSize.Size = new System.Drawing.Size(121, 21);
+            this.CboWheelSize.Size = new System.Drawing.Size(100, 21);
             this.CboWheelSize.TabIndex = 14;
             this.CboWheelSize.SelectedIndexChanged += new System.EventHandler(this.CboWheelSize_SelectedIndexChanged);
             // 
@@ -153,16 +181,16 @@
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
             this.LstDrawNumbers.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstDrawNumbers_ItemSelectionChanged);
             // 
-            // groupBox1
+            // gbbLotteryData
             // 
-            this.groupBox1.Controls.Add(this.LblAvailableLotteries);
-            this.groupBox1.Controls.Add(this.CboAvailableLotteries);
-            this.groupBox1.Controls.Add(this.DgvLotteryData);
-            this.groupBox1.Location = new System.Drawing.Point(12, 32);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(397, 518);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
+            this.gbbLotteryData.Controls.Add(this.LblAvailableLotteries);
+            this.gbbLotteryData.Controls.Add(this.CboAvailableLotteries);
+            this.gbbLotteryData.Controls.Add(this.DgvLotteryData);
+            this.gbbLotteryData.Location = new System.Drawing.Point(12, 32);
+            this.gbbLotteryData.Name = "gbbLotteryData";
+            this.gbbLotteryData.Size = new System.Drawing.Size(397, 518);
+            this.gbbLotteryData.TabIndex = 15;
+            this.gbbLotteryData.TabStop = false;
             // 
             // LblAvailableLotteries
             // 
@@ -273,23 +301,23 @@
             this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Bonus.Width = 30;
             // 
-            // BtnBuildWheel
+            // BtnLoadWheel
             // 
-            this.BtnBuildWheel.Enabled = false;
-            this.BtnBuildWheel.Location = new System.Drawing.Point(263, 32);
-            this.BtnBuildWheel.Name = "BtnBuildWheel";
-            this.BtnBuildWheel.Size = new System.Drawing.Size(113, 23);
-            this.BtnBuildWheel.TabIndex = 16;
-            this.BtnBuildWheel.Text = "Build Wheel";
-            this.BtnBuildWheel.UseVisualStyleBackColor = true;
-            this.BtnBuildWheel.Click += new System.EventHandler(this.BtnBuildWheel_Click);
+            this.BtnLoadWheel.Enabled = false;
+            this.BtnLoadWheel.Location = new System.Drawing.Point(302, 30);
+            this.BtnLoadWheel.Name = "BtnLoadWheel";
+            this.BtnLoadWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnLoadWheel.TabIndex = 18;
+            this.BtnLoadWheel.Text = "Load Wheel";
+            this.BtnLoadWheel.UseVisualStyleBackColor = true;
+            this.BtnLoadWheel.Click += new System.EventHandler(this.BtnLoadWheel_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 558);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbbLotteryData);
             this.Controls.Add(this.GpbWheels);
             this.Controls.Add(this.MnuStrip);
             this.MaximizeBox = false;
@@ -300,8 +328,8 @@
             this.MnuStrip.PerformLayout();
             this.GpbWheels.ResumeLayout(false);
             this.GpbWheels.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbbLotteryData.ResumeLayout(false);
+            this.gbbLotteryData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -311,15 +339,15 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip MnuStrip;
-        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem LoadLotteryResultsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AddDrawToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuLoadLotteryResultsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuAddDrawToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator TssSeparator;
         private System.Windows.Forms.GroupBox GpbWheels;
         private System.Windows.Forms.ComboBox CboWheelSize;
         private System.Windows.Forms.ListView LstDrawNumbers;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbbLotteryData;
         private System.Windows.Forms.Label LblAvailableLotteries;
         private System.Windows.Forms.ComboBox CboAvailableLotteries;
         private System.Windows.Forms.DataGridView DgvLotteryData;
@@ -334,6 +362,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bonus;
         private System.Windows.Forms.Label LblChooseWheel;
         private System.Windows.Forms.Button BtnBuildWheel;
+        private System.Windows.Forms.Button BtnSaveWheel;
+        private System.Windows.Forms.Button BtnLoadWheel;
     }
 }
 

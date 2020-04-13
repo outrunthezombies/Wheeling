@@ -108,16 +108,16 @@ namespace Wheeling
         private void FormMain_Load(object sender, EventArgs e)
         {
             GetLotteries();
-            foreach (KeyValuePair<string, int> kvp in lotteries)
-                CboAvailableLotteries.Items.Add(kvp.Key);
+            foreach (KeyValuePair<string, int> lottery in lotteries)
+                CboAvailableLotteries.Items.Add(lottery.Key);
         }
-
         private void CboAvailableLotteries_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadLotteryData();
             CboWheelSize.Enabled = true;
+            MnuAddDrawToolStripMenuItem.Enabled = true;
+            MnuLoadLotteryResultsToolStripMenuItem.Enabled = true;
         }
-
         private void CboWheelSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Convert.ToInt32(CboWheelSize.SelectedItem) < LstDrawNumbers.SelectedItems.Count)
@@ -126,15 +126,25 @@ namespace Wheeling
                     LstDrawNumbers.Items[index].Selected = false;
             }
             if (CboWheelSize.SelectedIndex > -1)
+            {
                 LstDrawNumbers.Enabled = true;
+                BtnLoadWheel.Enabled = true;
+            }
+
             CheckIfReadyToWheel();
         }
         private void CheckIfReadyToWheel()
         {
             if (LstDrawNumbers.SelectedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
+            {
                 BtnBuildWheel.Enabled = true;
+                BtnSaveWheel.Enabled = true;
+            }
             else if (LstDrawNumbers.SelectedItems.Count < Convert.ToInt32(CboWheelSize.SelectedItem))
+            {
                 BtnBuildWheel.Enabled = false;
+                BtnSaveWheel.Enabled = false;
+            }
         }
         private void LstDrawNumbers_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
@@ -145,6 +155,23 @@ namespace Wheeling
         private void BtnBuildWheel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Build the Wheel!");
+        }
+        private void BtnSaveWheel_Click(object sender, EventArgs e)
+        {
+            string wheel = "";
+            for (int index = 0; index < LstDrawNumbers.SelectedItems.Count - 1; index++)
+            {
+                wheel += LstDrawNumbers.SelectedItems[index].Text + ",";
+            }
+            wheel += LstDrawNumbers.SelectedItems[LstDrawNumbers.SelectedItems.Count-1].Text;
+            properties.Save();
+            MessageBox.Show("Wheel is saved!");
+        }
+
+        private void BtnLoadWheel_Click(object sender, EventArgs e)
+        {
+            LstDrawNumbers.Items.Clear();
+            
         }
     }
 }

@@ -6,10 +6,10 @@ namespace Wheeling
 {
     public class WheelingProperties
     {
-        private Dictionary<String, String> properties;
-        private String filename =".\\wheeling.properties";
+        private Dictionary<string, string> properties;
+        private string filename =".\\wheeling.properties";
 
-        public WheelingProperties(String file)
+        public WheelingProperties(string file)
         {
             filename = file;
             Reload(filename);
@@ -18,15 +18,15 @@ namespace Wheeling
         {
             Reload(filename);
         }
-        public String Get(String field, String defValue)
+        public string Get(string field, string defValue)
         {
             return Get(field) ?? defValue;
         }
-        public String Get(String field)
+        public string Get(string field)
         {
             return (properties.ContainsKey(field)) ? (properties[field]) : (null);
         }
-        public void Set(String field, Object value)
+        public void Set(string field, Object value)
         {
             if (!properties.ContainsKey(field))
                 properties.Add(field, value.ToString());
@@ -37,7 +37,7 @@ namespace Wheeling
         {
             Save(this.filename);
         }
-        public void Save(String filename)
+        public void Save(string filename)
         {
             this.filename = filename;
 
@@ -46,8 +46,8 @@ namespace Wheeling
 
             System.IO.StreamWriter file = new System.IO.StreamWriter(filename);
 
-            foreach (String prop in properties.Keys.ToArray())
-                if (!String.IsNullOrWhiteSpace(properties[prop]))
+            foreach (string prop in properties.Keys.ToArray())
+                if (!string.IsNullOrWhiteSpace(properties[prop]))
                     file.WriteLine(prop + "=" + properties[prop]);
 
             file.Close();
@@ -56,29 +56,29 @@ namespace Wheeling
         {
             Reload(this.filename);
         }
-        public void Reload(String filename)
+        public void Reload(string filename)
         {
             this.filename = filename;
-            properties = new Dictionary<String, String>();
+            properties = new Dictionary<string, string>();
 
             if (System.IO.File.Exists(filename))
                 LoadFromFile(filename);
             else
                 System.IO.File.Create(filename);
         }
-        private void LoadFromFile(String file)
+        private void LoadFromFile(string file)
         {
-            foreach (String line in System.IO.File.ReadAllLines(file))
+            foreach (string line in System.IO.File.ReadAllLines(file))
             {
-                if ((!String.IsNullOrEmpty(line)) &&
+                if ((!string.IsNullOrEmpty(line)) &&
                     (!line.StartsWith(";")) &&
                     (!line.StartsWith("#")) &&
                     (!line.StartsWith("'")) &&
                     (line.Contains('=')))
                 {
                     int index = line.IndexOf('=');
-                    String key = line.Substring(0, index).Trim();
-                    String value = line.Substring(index + 1).Trim();
+                    string key = line.Substring(0, index).Trim();
+                    string value = line.Substring(index + 1).Trim();
 
                     if ((value.StartsWith("\"") && value.EndsWith("\"")) || (value.StartsWith("'") && value.EndsWith("'")))
                         value = value.Substring(1, value.Length - 2);
