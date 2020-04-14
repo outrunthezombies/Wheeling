@@ -120,7 +120,7 @@ public static class SharedCode
     }
     public static void GetLotteries()
     {
-        string sql = "SELECT DISTINCT id, lottery_name, max_number, numbers_drawn, min_date FROM Lottery ORDER BY lottery_name";
+        string sql = "SELECT id, lottery_name, max_number, numbers_drawn FROM Lottery ORDER BY lottery_name";
 
         OleDbDataReader oOleDbDataReader;
         try
@@ -136,10 +136,26 @@ public static class SharedCode
                     lottery.Name = oOleDbDataReader.GetString(1);
                     lottery.MaxNumber = oOleDbDataReader.GetInt32(2);
                     lottery.NumbersDrawn = oOleDbDataReader.GetInt32(3);
-                    lottery.MinDrawDate = oOleDbDataReader.GetDateTime(4);
                     lotteries.Add(lottery);
                 }
                 oOleDbDataReader.Close();
+            }
+            sql = "SELECT lottery_id, min_date FROM min_date_lookup ORDER BY lottery_id;";
+            if (OpenDBConnection(sql))
+            {
+                oOleDbDataReader = oOleDbCommand.ExecuteReader();
+                while (oOleDbDataReader.Read())
+                {
+                    foreach (Lottery lottery in lotteries)
+                    {
+                        DateTime dt = new DateTime();
+                        if (lottery.ID == oOleDbDataReader.GetInt32(0))
+                        {
+                            dt = oOleDbDataReader.GetDateTime(1);
+                            lottery.MinDrawDate = dt.AddDays(1);
+                        }
+                    }    
+                }
             }
         }
         catch (Exception ex)
