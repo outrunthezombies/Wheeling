@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.IO;
 using System.Windows.Forms;
 using Wheeling;
 
@@ -13,7 +14,44 @@ public static class SharedCode
     public static readonly string sConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + properties.Get("datasource") + ";Persist Security Info=False;";
     public static List<Lottery> lotteries = new List<Lottery>();
     public static int lotterySelected = -1;
+    private static List<int[]> wheels = new List<int[]>();
+    public static void LoadWheel(DataGridView dgv, int wheelSize, int tickets, ListView.CheckedListViewItemCollection lvc)
+    {
+        wheels.Clear();
+        dgv.Rows.Clear();
+        try
+        {
+            StreamReader reader = new StreamReader(File.OpenRead("wheel-" + lotteries[lotterySelected].NumbersDrawn + "-" + wheelSize.ToString() + "-" + tickets + ".csv"));
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                string[] values = line.Split(',');
+                int[] iValues = new int[values.Length];
+                for (int index = 0; index < values.Length; index++)
+                {
+                    iValues[index] = Convert.ToInt32(values[index]);
+                }
+                wheels.Add(iValues);
+            }
 
+            for (int row = 0; row < wheels.Count; row++)
+            {
+                dgv.Rows.Add();
+                dgv.Rows[row].Cells[0].Value = row + 1;
+                for (int column = 1; column <= lotteries[lotterySelected].NumbersDrawn; column++)
+                {
+                    int position = wheels[row][column - 1];
+                    dgv.Rows[row].Cells[column].Value = lvc[position - 1].Text;
+                }
+            }
+            reader.Close();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Couldn't load wheel!");
+            Console.WriteLine(ex.StackTrace);
+        }
+    }
     public enum DataColumn
     {
         DrawDate = 0,

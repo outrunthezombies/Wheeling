@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using static SharedCode;
@@ -132,18 +131,18 @@ namespace Wheeling
         {
             if (LstDrawNumbers.CheckedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
             {
-                BtnBuildWheel.Enabled = true;
+                CboTickets.Enabled = true;
                 BtnSaveWheel.Enabled = true;
             }
             else if (LstDrawNumbers.CheckedItems.Count < Convert.ToInt32(CboWheelSize.SelectedItem))
             {
-                BtnBuildWheel.Enabled = false;
+                CboTickets.Enabled = false;
                 BtnSaveWheel.Enabled = false;
             }
         }
         private void BtnBuildWheel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Build the Wheel!");
+            LoadWheel(DgvTickets, Convert.ToInt32(CboWheelSize.Text), Convert.ToInt32(CboTickets.Text), LstDrawNumbers.CheckedItems);
         }
         private void BtnSaveWheel_Click(object sender, EventArgs e)
         {
@@ -206,6 +205,17 @@ namespace Wheeling
             if (LstDrawNumbers.CheckedItems.Count > Convert.ToInt32(CboWheelSize.SelectedItem))
                 e.Item.Checked = false;
             CheckIfReadyToWheel();
+        }
+
+        private void CboTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CboTickets.SelectedIndex > -1)
+            {
+                BtnBuildWheel.Enabled = true;
+            } else
+            {
+                BtnBuildWheel.Enabled = false;
+            }
         }
     }
 }

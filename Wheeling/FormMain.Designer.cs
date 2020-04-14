@@ -54,10 +54,24 @@
             this.N6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GpbTickets = new System.Windows.Forms.GroupBox();
+            this.LblTickets = new System.Windows.Forms.Label();
+            this.DgvTickets = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CboTickets = new System.Windows.Forms.ComboBox();
             this.MnuStrip.SuspendLayout();
             this.GpbWheels.SuspendLayout();
             this.gbbLotteryData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).BeginInit();
+            this.GpbTickets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTickets)).BeginInit();
             this.SuspendLayout();
             // 
             // MnuStrip
@@ -66,7 +80,7 @@
             this.MnuFileToolStripMenuItem});
             this.MnuStrip.Location = new System.Drawing.Point(0, 0);
             this.MnuStrip.Name = "MnuStrip";
-            this.MnuStrip.Size = new System.Drawing.Size(806, 24);
+            this.MnuStrip.Size = new System.Drawing.Size(1197, 24);
             this.MnuStrip.TabIndex = 0;
             this.MnuStrip.Text = "MnuMainMenu";
             // 
@@ -113,7 +127,6 @@
             // 
             this.GpbWheels.Controls.Add(this.BtnLoadWheel);
             this.GpbWheels.Controls.Add(this.BtnSaveWheel);
-            this.GpbWheels.Controls.Add(this.BtnBuildWheel);
             this.GpbWheels.Controls.Add(this.LblChooseWheel);
             this.GpbWheels.Controls.Add(this.CboWheelSize);
             this.GpbWheels.Controls.Add(this.LstDrawNumbers);
@@ -126,9 +139,9 @@
             // BtnLoadWheel
             // 
             this.BtnLoadWheel.Enabled = false;
-            this.BtnLoadWheel.Location = new System.Drawing.Point(302, 30);
+            this.BtnLoadWheel.Location = new System.Drawing.Point(302, 32);
             this.BtnLoadWheel.Name = "BtnLoadWheel";
-            this.BtnLoadWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnLoadWheel.Size = new System.Drawing.Size(75, 24);
             this.BtnLoadWheel.TabIndex = 18;
             this.BtnLoadWheel.Text = "Load Wheel";
             this.BtnLoadWheel.UseVisualStyleBackColor = true;
@@ -137,9 +150,9 @@
             // BtnSaveWheel
             // 
             this.BtnSaveWheel.Enabled = false;
-            this.BtnSaveWheel.Location = new System.Drawing.Point(212, 30);
+            this.BtnSaveWheel.Location = new System.Drawing.Point(212, 32);
             this.BtnSaveWheel.Name = "BtnSaveWheel";
-            this.BtnSaveWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnSaveWheel.Size = new System.Drawing.Size(75, 24);
             this.BtnSaveWheel.TabIndex = 17;
             this.BtnSaveWheel.Text = "Save Wheel";
             this.BtnSaveWheel.UseVisualStyleBackColor = true;
@@ -148,9 +161,9 @@
             // BtnBuildWheel
             // 
             this.BtnBuildWheel.Enabled = false;
-            this.BtnBuildWheel.Location = new System.Drawing.Point(127, 30);
+            this.BtnBuildWheel.Location = new System.Drawing.Point(119, 32);
             this.BtnBuildWheel.Name = "BtnBuildWheel";
-            this.BtnBuildWheel.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuildWheel.Size = new System.Drawing.Size(75, 24);
             this.BtnBuildWheel.TabIndex = 16;
             this.BtnBuildWheel.Text = "Build Wheel";
             this.BtnBuildWheel.UseVisualStyleBackColor = true;
@@ -174,8 +187,9 @@
             "7",
             "9",
             "11",
-            "15"});
-            this.CboWheelSize.Location = new System.Drawing.Point(6, 32);
+            "15",
+            "18"});
+            this.CboWheelSize.Location = new System.Drawing.Point(6, 34);
             this.CboWheelSize.Name = "CboWheelSize";
             this.CboWheelSize.Size = new System.Drawing.Size(100, 21);
             this.CboWheelSize.TabIndex = 14;
@@ -186,9 +200,9 @@
             this.LstDrawNumbers.CheckBoxes = true;
             this.LstDrawNumbers.Enabled = false;
             this.LstDrawNumbers.HideSelection = false;
-            this.LstDrawNumbers.Location = new System.Drawing.Point(6, 59);
+            this.LstDrawNumbers.Location = new System.Drawing.Point(6, 62);
             this.LstDrawNumbers.Name = "LstDrawNumbers";
-            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 449);
+            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 450);
             this.LstDrawNumbers.TabIndex = 13;
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
             this.LstDrawNumbers.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDrawNumbers_ItemChecked);
@@ -217,7 +231,7 @@
             // 
             this.CboAvailableLotteries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboAvailableLotteries.FormattingEnabled = true;
-            this.CboAvailableLotteries.Location = new System.Drawing.Point(6, 35);
+            this.CboAvailableLotteries.Location = new System.Drawing.Point(6, 32);
             this.CboAvailableLotteries.Name = "CboAvailableLotteries";
             this.CboAvailableLotteries.Size = new System.Drawing.Size(199, 21);
             this.CboAvailableLotteries.TabIndex = 6;
@@ -238,7 +252,7 @@
             this.Bonus});
             this.DgvLotteryData.Location = new System.Drawing.Point(6, 62);
             this.DgvLotteryData.Name = "DgvLotteryData";
-            this.DgvLotteryData.Size = new System.Drawing.Size(382, 446);
+            this.DgvLotteryData.Size = new System.Drawing.Size(382, 450);
             this.DgvLotteryData.TabIndex = 5;
             // 
             // Date
@@ -313,11 +327,132 @@
             this.Bonus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Bonus.Width = 30;
             // 
+            // GpbTickets
+            // 
+            this.GpbTickets.Controls.Add(this.CboTickets);
+            this.GpbTickets.Controls.Add(this.DgvTickets);
+            this.GpbTickets.Controls.Add(this.LblTickets);
+            this.GpbTickets.Controls.Add(this.BtnBuildWheel);
+            this.GpbTickets.Location = new System.Drawing.Point(806, 32);
+            this.GpbTickets.Name = "GpbTickets";
+            this.GpbTickets.Size = new System.Drawing.Size(385, 518);
+            this.GpbTickets.TabIndex = 16;
+            this.GpbTickets.TabStop = false;
+            // 
+            // LblTickets
+            // 
+            this.LblTickets.AutoSize = true;
+            this.LblTickets.Location = new System.Drawing.Point(6, 16);
+            this.LblTickets.Name = "LblTickets";
+            this.LblTickets.Size = new System.Drawing.Size(45, 13);
+            this.LblTickets.TabIndex = 15;
+            this.LblTickets.Text = "Tickets:";
+            // 
+            // DgvTickets
+            // 
+            this.DgvTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.DgvTickets.Location = new System.Drawing.Point(9, 62);
+            this.DgvTickets.Name = "DgvTickets";
+            this.DgvTickets.Size = new System.Drawing.Size(382, 450);
+            this.DgvTickets.TabIndex = 16;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ticket";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "N1";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "N2";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "N3";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "N4";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "N5";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn6.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "N6";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn7.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "N7";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn8.Width = 30;
+            // 
+            // CboTickets
+            // 
+            this.CboTickets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTickets.Enabled = false;
+            this.CboTickets.FormattingEnabled = true;
+            this.CboTickets.Items.AddRange(new object[] {
+            "6",
+            "10",
+            "11",
+            "12",
+            "19",
+            "24"});
+            this.CboTickets.Location = new System.Drawing.Point(9, 34);
+            this.CboTickets.Name = "CboTickets";
+            this.CboTickets.Size = new System.Drawing.Size(100, 21);
+            this.CboTickets.TabIndex = 17;
+            this.CboTickets.SelectedIndexChanged += new System.EventHandler(this.CboTickets_SelectedIndexChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 558);
+            this.ClientSize = new System.Drawing.Size(1197, 558);
+            this.Controls.Add(this.GpbTickets);
             this.Controls.Add(this.gbbLotteryData);
             this.Controls.Add(this.GpbWheels);
             this.Controls.Add(this.MnuStrip);
@@ -332,6 +467,9 @@
             this.gbbLotteryData.ResumeLayout(false);
             this.gbbLotteryData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLotteryData)).EndInit();
+            this.GpbTickets.ResumeLayout(false);
+            this.GpbTickets.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTickets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,6 +503,18 @@
         private System.Windows.Forms.Button BtnBuildWheel;
         private System.Windows.Forms.Button BtnSaveWheel;
         private System.Windows.Forms.Button BtnLoadWheel;
+        private System.Windows.Forms.GroupBox GpbTickets;
+        private System.Windows.Forms.DataGridView DgvTickets;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Label LblTickets;
+        private System.Windows.Forms.ComboBox CboTickets;
     }
 }
 
