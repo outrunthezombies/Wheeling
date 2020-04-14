@@ -147,26 +147,65 @@ namespace Wheeling
         }
         private void BtnSaveWheel_Click(object sender, EventArgs e)
         {
-            string wheel = "";
-            for (int index = 0; index < LstDrawNumbers.CheckedItems.Count - 1; index++)
+            string sql = "DELETE FROM WHEELS WHERE lottery_id = " + lotteries[lotterySelected].ID + " AND wheel_size = " + CboWheelSize.Text + ";";
+
+            try
             {
-                wheel += LstDrawNumbers.CheckedItems[index].Text + ",";
+                if (OpenDBConnection(sql))
+                    oOleDbCommand.ExecuteReader();
+
+                sql = "INSERT INTO Wheels (lottery_id,wheel_size,selection) " + "VALUES (" + lotteries[lotterySelected].ID + "," + CboWheelSize.Text + ",";
+
+                for (int index = 0; index < LstDrawNumbers.CheckedItems.Count; index++)
+                {
+                    if (OpenDBConnection(sql + LstDrawNumbers.CheckedItems[index].Text + ");"))
+                    {
+                        oOleDbCommand.ExecuteReader();
+                    }
+                }
             }
-            wheel += LstDrawNumbers.CheckedItems[LstDrawNumbers.CheckedItems.Count-1].Text;
-            properties.Save();
-            MessageBox.Show("Wheel is saved!");
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                CloseDBConnection();
+            }
+        MessageBox.Show("Wheel is saved!");
         }
 
         private void BtnLoadWheel_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem lvi in LstDrawNumbers.Items)
                 lvi.Checked = false;
-        }
 
-        private void LstDrawNumbers_ItemCheck(object sender, ItemCheckEventArgs e)
+            string sql = "SELECT selection FROM Wheels WHERE lottery_id = " + lotteries[lotterySelected].ID + " AND wheel_size = " + CboWheelSize.Text + ";";
+            OleDbDataReader oOleDbDataReader;
+
+            try
+            {
+                if (OpenDBConnection(sql))
+                {
+                    oOleDbDataReader = oOleDbCommand.ExecuteReader();
+
+                    while (oOleDbDataReader.Read())
+                    {
+                        int wheelNumber = oOleDbDataReader.GetInt32(0) - 1;
+                        LstDrawNumbers.Items[wheelNumber].Checked = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+        private void LstDrawNumbers_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (LstDrawNumbers.CheckedItems.Count == Convert.ToInt32(CboWheelSize.SelectedItem))
-                e.NewValue = CheckState.Unchecked;
+            if (LstDrawNumbers.CheckedItems.Count > Convert.ToInt32(CboWheelSize.SelectedItem))
+                e.Item.Checked = false;
+            CheckIfReadyToWheel();
         }
     }
 }

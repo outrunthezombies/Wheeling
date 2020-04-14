@@ -191,7 +191,7 @@
             this.LstDrawNumbers.Size = new System.Drawing.Size(371, 449);
             this.LstDrawNumbers.TabIndex = 13;
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
-            this.LstDrawNumbers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LstDrawNumbers_ItemCheck);
+            this.LstDrawNumbers.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDrawNumbers_ItemChecked);
             // 
             // gbbLotteryData
             // 

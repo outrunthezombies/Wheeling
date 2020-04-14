@@ -8,7 +8,7 @@ using Wheeling;
 public static class SharedCode
 {
     public static WheelingProperties properties = new WheelingProperties();
-    public static OleDbConnection oOleDbConnection;
+    public static OleDbConnection oOleDbConnection = new OleDbConnection();
     public static OleDbCommand oOleDbCommand;
     public static readonly string sConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + properties.Get("datasource") + ";Persist Security Info=False;";
     public static List<Lottery> lotteries = new List<Lottery>();
@@ -42,15 +42,14 @@ public static class SharedCode
     {
         try
         {
-            oOleDbConnection = new OleDbConnection
+            if (oOleDbConnection == null)
+                oOleDbConnection = new OleDbConnection();
+            if (oOleDbConnection.State != ConnectionState.Open)
             {
-                ConnectionString = sConnectionString
-            };
-            oOleDbConnection.Open();
-            if (oOleDbConnection.State == ConnectionState.Open)
-            {
-                oOleDbCommand = new OleDbCommand(sql, oOleDbConnection);
+                oOleDbConnection.ConnectionString = sConnectionString;
+                oOleDbConnection.Open();
             }
+            oOleDbCommand = new OleDbCommand(sql, oOleDbConnection);
 
             return true;
         }
