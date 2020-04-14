@@ -7,7 +7,7 @@ namespace Wheeling
     public class WheelingProperties
     {
         private Dictionary<string, string> properties;
-        private string filename =".\\wheeling.properties";
+        private string filename ="..\\..\\support\\wheeling.properties";
 
         public WheelingProperties(string file)
         {
