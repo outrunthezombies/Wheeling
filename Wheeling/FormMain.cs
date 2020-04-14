@@ -84,10 +84,6 @@ namespace Wheeling
                 {
                     Console.WriteLine(ex.StackTrace);
                 }
-                finally
-                {
-                    CloseDBConnection();
-                }
             }
             LoadAllLotteryNumberOptions(LstDrawNumbers);
             Cursor.Current = Cursors.Default;
@@ -166,10 +162,6 @@ namespace Wheeling
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-            }
-            finally
-            {
-                CloseDBConnection();
             }
         MessageBox.Show("Wheel is saved!");
         }
