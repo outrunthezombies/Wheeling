@@ -21,7 +21,7 @@ public static class SharedCode
         dgv.Rows.Clear();
         try
         {
-            StreamReader reader = new StreamReader(File.OpenRead("wheel-" + lotteries[lotterySelected].NumbersDrawn + "-" + wheelSize.ToString() + "-" + tickets + ".csv"));
+            StreamReader reader = new StreamReader(File.OpenRead(properties.Get("wheelpath") + "wheel-" + lotteries[lotterySelected].NumbersDrawn + "-" + wheelSize.ToString() + "-" + tickets + ".csv"));
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -120,7 +120,7 @@ public static class SharedCode
     }
     public static void GetLotteries()
     {
-        string sql = "SELECT id, lottery_name, max_number, numbers_drawn FROM Lottery ORDER BY lottery_name";
+        string sql = "SELECT DISTINCT id, lottery_name, max_number, numbers_drawn, min_date FROM Lottery ORDER BY lottery_name";
 
         OleDbDataReader oOleDbDataReader;
         try
@@ -131,13 +131,12 @@ public static class SharedCode
 
                 while (oOleDbDataReader.Read())
                 {
-                    Lottery lottery = new Lottery
-                    {
-                        ID = oOleDbDataReader.GetInt32(0),
-                        Name = oOleDbDataReader.GetString(1),
-                        MaxNumber = oOleDbDataReader.GetInt32(2),
-                        NumbersDrawn = oOleDbDataReader.GetInt32(3)
-                    };
+                    Lottery lottery = new Lottery();
+                    lottery.ID = oOleDbDataReader.GetInt32(0);
+                    lottery.Name = oOleDbDataReader.GetString(1);
+                    lottery.MaxNumber = oOleDbDataReader.GetInt32(2);
+                    lottery.NumbersDrawn = oOleDbDataReader.GetInt32(3);
+                    lottery.MinDrawDate = oOleDbDataReader.GetDateTime(4);
                     lotteries.Add(lottery);
                 }
                 oOleDbDataReader.Close();
