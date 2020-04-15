@@ -115,12 +115,21 @@ namespace Wheeling
                 foreach (ListViewItem lvi in LstDrawNumbers.Items)
                     lvi.Checked = false;
             }
-            if (CboWheelSize.SelectedIndex > -1)
-            {
-                LstDrawNumbers.Enabled = true;
-                BtnLoadWheel.Enabled = true;
-            }
 
+            int[] picks = new int[lotteries[CboAvailableLotteries.SelectedIndex].MaxNumber+1];
+            foreach (DataGridViewRow dgvr in DgvLotteryData.Rows)
+            {
+                for (int cell = 1; cell <= lotteries[CboAvailableLotteries.SelectedIndex].NumbersDrawn; cell++)
+                {
+                    picks[Convert.ToInt32(dgvr.Cells[cell].Value)]++;
+                }
+            }
+            for (int i=1; i<picks.Length; i++)
+            {
+                Console.WriteLine(i + ": " + picks[i]);
+            }
+            LstDrawNumbers.Enabled = true;
+            BtnLoadWheel.Enabled = true;
             CheckIfReadyToWheel();
         }
         private void CheckIfReadyToWheel()

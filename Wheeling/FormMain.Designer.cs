@@ -37,10 +37,10 @@
             this.GpbWheels = new System.Windows.Forms.GroupBox();
             this.BtnLoadWheel = new System.Windows.Forms.Button();
             this.BtnSaveWheel = new System.Windows.Forms.Button();
-            this.BtnBuildWheel = new System.Windows.Forms.Button();
             this.LblChooseWheel = new System.Windows.Forms.Label();
             this.CboWheelSize = new System.Windows.Forms.ComboBox();
             this.LstDrawNumbers = new System.Windows.Forms.ListView();
+            this.BtnBuildWheel = new System.Windows.Forms.Button();
             this.gbbLotteryData = new System.Windows.Forms.GroupBox();
             this.LblAvailableLotteries = new System.Windows.Forms.Label();
             this.CboAvailableLotteries = new System.Windows.Forms.ComboBox();
@@ -55,7 +55,7 @@
             this.N7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bonus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GpbTickets = new System.Windows.Forms.GroupBox();
-            this.LblTickets = new System.Windows.Forms.Label();
+            this.CboTickets = new System.Windows.Forms.ComboBox();
             this.DgvTickets = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CboTickets = new System.Windows.Forms.ComboBox();
+            this.LblTickets = new System.Windows.Forms.Label();
+            this.LblRecommendationsLabel = new System.Windows.Forms.Label();
+            this.LblRecommendations = new System.Windows.Forms.Label();
             this.MnuStrip.SuspendLayout();
             this.GpbWheels.SuspendLayout();
             this.gbbLotteryData.SuspendLayout();
@@ -125,6 +127,8 @@
             // 
             // GpbWheels
             // 
+            this.GpbWheels.Controls.Add(this.LblRecommendations);
+            this.GpbWheels.Controls.Add(this.LblRecommendationsLabel);
             this.GpbWheels.Controls.Add(this.BtnLoadWheel);
             this.GpbWheels.Controls.Add(this.BtnSaveWheel);
             this.GpbWheels.Controls.Add(this.LblChooseWheel);
@@ -132,7 +136,7 @@
             this.GpbWheels.Controls.Add(this.LstDrawNumbers);
             this.GpbWheels.Location = new System.Drawing.Point(415, 32);
             this.GpbWheels.Name = "GpbWheels";
-            this.GpbWheels.Size = new System.Drawing.Size(385, 518);
+            this.GpbWheels.Size = new System.Drawing.Size(385, 479);
             this.GpbWheels.TabIndex = 6;
             this.GpbWheels.TabStop = false;
             // 
@@ -157,17 +161,6 @@
             this.BtnSaveWheel.Text = "Save Wheel";
             this.BtnSaveWheel.UseVisualStyleBackColor = true;
             this.BtnSaveWheel.Click += new System.EventHandler(this.BtnSaveWheel_Click);
-            // 
-            // BtnBuildWheel
-            // 
-            this.BtnBuildWheel.Enabled = false;
-            this.BtnBuildWheel.Location = new System.Drawing.Point(119, 32);
-            this.BtnBuildWheel.Name = "BtnBuildWheel";
-            this.BtnBuildWheel.Size = new System.Drawing.Size(75, 24);
-            this.BtnBuildWheel.TabIndex = 16;
-            this.BtnBuildWheel.Text = "Build Wheel";
-            this.BtnBuildWheel.UseVisualStyleBackColor = true;
-            this.BtnBuildWheel.Click += new System.EventHandler(this.BtnBuildWheel_Click);
             // 
             // LblChooseWheel
             // 
@@ -202,10 +195,21 @@
             this.LstDrawNumbers.HideSelection = false;
             this.LstDrawNumbers.Location = new System.Drawing.Point(6, 62);
             this.LstDrawNumbers.Name = "LstDrawNumbers";
-            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 450);
+            this.LstDrawNumbers.Size = new System.Drawing.Size(371, 407);
             this.LstDrawNumbers.TabIndex = 13;
             this.LstDrawNumbers.UseCompatibleStateImageBehavior = false;
             this.LstDrawNumbers.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDrawNumbers_ItemChecked);
+            // 
+            // BtnBuildWheel
+            // 
+            this.BtnBuildWheel.Enabled = false;
+            this.BtnBuildWheel.Location = new System.Drawing.Point(119, 32);
+            this.BtnBuildWheel.Name = "BtnBuildWheel";
+            this.BtnBuildWheel.Size = new System.Drawing.Size(75, 24);
+            this.BtnBuildWheel.TabIndex = 16;
+            this.BtnBuildWheel.Text = "Build Wheel";
+            this.BtnBuildWheel.UseVisualStyleBackColor = true;
+            this.BtnBuildWheel.Click += new System.EventHandler(this.BtnBuildWheel_Click);
             // 
             // gbbLotteryData
             // 
@@ -214,7 +218,7 @@
             this.gbbLotteryData.Controls.Add(this.DgvLotteryData);
             this.gbbLotteryData.Location = new System.Drawing.Point(12, 32);
             this.gbbLotteryData.Name = "gbbLotteryData";
-            this.gbbLotteryData.Size = new System.Drawing.Size(397, 518);
+            this.gbbLotteryData.Size = new System.Drawing.Size(397, 479);
             this.gbbLotteryData.TabIndex = 15;
             this.gbbLotteryData.TabStop = false;
             // 
@@ -252,7 +256,7 @@
             this.Bonus});
             this.DgvLotteryData.Location = new System.Drawing.Point(6, 62);
             this.DgvLotteryData.Name = "DgvLotteryData";
-            this.DgvLotteryData.Size = new System.Drawing.Size(382, 450);
+            this.DgvLotteryData.Size = new System.Drawing.Size(382, 407);
             this.DgvLotteryData.TabIndex = 5;
             // 
             // Date
@@ -335,18 +339,27 @@
             this.GpbTickets.Controls.Add(this.BtnBuildWheel);
             this.GpbTickets.Location = new System.Drawing.Point(806, 32);
             this.GpbTickets.Name = "GpbTickets";
-            this.GpbTickets.Size = new System.Drawing.Size(385, 518);
+            this.GpbTickets.Size = new System.Drawing.Size(385, 479);
             this.GpbTickets.TabIndex = 16;
             this.GpbTickets.TabStop = false;
             // 
-            // LblTickets
+            // CboTickets
             // 
-            this.LblTickets.AutoSize = true;
-            this.LblTickets.Location = new System.Drawing.Point(6, 16);
-            this.LblTickets.Name = "LblTickets";
-            this.LblTickets.Size = new System.Drawing.Size(45, 13);
-            this.LblTickets.TabIndex = 15;
-            this.LblTickets.Text = "Tickets:";
+            this.CboTickets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTickets.Enabled = false;
+            this.CboTickets.FormattingEnabled = true;
+            this.CboTickets.Items.AddRange(new object[] {
+            "6",
+            "10",
+            "11",
+            "12",
+            "19",
+            "24"});
+            this.CboTickets.Location = new System.Drawing.Point(9, 34);
+            this.CboTickets.Name = "CboTickets";
+            this.CboTickets.Size = new System.Drawing.Size(100, 21);
+            this.CboTickets.TabIndex = 17;
+            this.CboTickets.SelectedIndexChanged += new System.EventHandler(this.CboTickets_SelectedIndexChanged);
             // 
             // DgvTickets
             // 
@@ -362,7 +375,7 @@
             this.dataGridViewTextBoxColumn8});
             this.DgvTickets.Location = new System.Drawing.Point(9, 62);
             this.DgvTickets.Name = "DgvTickets";
-            this.DgvTickets.Size = new System.Drawing.Size(382, 450);
+            this.DgvTickets.Size = new System.Drawing.Size(382, 407);
             this.DgvTickets.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn1
@@ -429,29 +442,37 @@
             this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn8.Width = 30;
             // 
-            // CboTickets
+            // LblTickets
             // 
-            this.CboTickets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboTickets.Enabled = false;
-            this.CboTickets.FormattingEnabled = true;
-            this.CboTickets.Items.AddRange(new object[] {
-            "6",
-            "10",
-            "11",
-            "12",
-            "19",
-            "24"});
-            this.CboTickets.Location = new System.Drawing.Point(9, 34);
-            this.CboTickets.Name = "CboTickets";
-            this.CboTickets.Size = new System.Drawing.Size(100, 21);
-            this.CboTickets.TabIndex = 17;
-            this.CboTickets.SelectedIndexChanged += new System.EventHandler(this.CboTickets_SelectedIndexChanged);
+            this.LblTickets.AutoSize = true;
+            this.LblTickets.Location = new System.Drawing.Point(6, 16);
+            this.LblTickets.Name = "LblTickets";
+            this.LblTickets.Size = new System.Drawing.Size(45, 13);
+            this.LblTickets.TabIndex = 15;
+            this.LblTickets.Text = "Tickets:";
+            // 
+            // LblRecommendationsLabel
+            // 
+            this.LblRecommendationsLabel.AutoSize = true;
+            this.LblRecommendationsLabel.Location = new System.Drawing.Point(126, 15);
+            this.LblRecommendationsLabel.Name = "LblRecommendationsLabel";
+            this.LblRecommendationsLabel.Size = new System.Drawing.Size(98, 13);
+            this.LblRecommendationsLabel.TabIndex = 19;
+            this.LblRecommendationsLabel.Text = "Recommendations:";
+            // 
+            // LblRecommendations
+            // 
+            this.LblRecommendations.AutoSize = true;
+            this.LblRecommendations.Location = new System.Drawing.Point(219, 15);
+            this.LblRecommendations.Name = "LblRecommendations";
+            this.LblRecommendations.Size = new System.Drawing.Size(0, 13);
+            this.LblRecommendations.TabIndex = 20;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 558);
+            this.ClientSize = new System.Drawing.Size(1197, 523);
             this.Controls.Add(this.GpbTickets);
             this.Controls.Add(this.gbbLotteryData);
             this.Controls.Add(this.GpbWheels);
@@ -515,6 +536,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Label LblTickets;
         private System.Windows.Forms.ComboBox CboTickets;
+        private System.Windows.Forms.Label LblRecommendations;
+        private System.Windows.Forms.Label LblRecommendationsLabel;
     }
 }
 
